@@ -1,11 +1,13 @@
 
+   <%= turbo_frame_tag "quote"  do%> 
+
 <div class="bg-gray-50 ">
  
 
   <main class="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:max-w-none">
       <h1 class="sr-only">Get Quote</h1>
-      <%= form_with url: quote_index_path, class: "lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"   do |form| %>
+      <%= form_with model: @service, url: quote_index_path, method: :get, class: "lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"   do |form| %>
         <div>
           <div>
             <h2 class="text-lg font-medium text-gray-900">Lets work Together</h2>
@@ -13,7 +15,13 @@
             <div>
                 <label for="country" class="block text-sm font-medium text-gray-700">Select Service</label>
                 <div class="mt-4">
-                  <%= form.collection_select :service_id, @services, :id, :name,  { include_blank: "Select a service" }, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", onchange: "this.form.requestSubmit()"%>
+                 <%= select_tag :service_id, options_from_collection_for_select(@services, "id", "name", @service&.id), prompt: "- Please select -", class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", onchange: "this.form.requestSubmit()" %>
+                </div>
+            </div>
+            <div>
+                <label for="country" class="block text-sm font-medium text-gray-700">Select Urgency</label>
+                <div class="mt-4">
+                 <%= select_tag :urgency_id, options_from_collection_for_select(@urgencies, "id", "duration", @urgency&.id), prompt: "- Please select -", class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", onchange: "this.form.requestSubmit()" %>
                 </div>
             </div>
 
@@ -211,7 +219,9 @@
 
         <!-- Order summary -->
        <%= render "order" %>
-    <% end %>
+     <% end %>
+ 
     </div>
   </main>
 </div>
+   <% end %> 

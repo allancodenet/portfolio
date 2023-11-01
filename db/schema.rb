@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_165529) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_01_062417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "extras", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "price"
+    t.bigint "service_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_extras_on_service_id"
+  end
 
   create_table "services", force: :cascade do |t|
     t.string "name"
@@ -21,4 +31,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_165529) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "urgencies", force: :cascade do |t|
+    t.integer "duration"
+    t.decimal "price"
+    t.bigint "service_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_urgencies_on_service_id"
+  end
+
+  add_foreign_key "extras", "services"
+  add_foreign_key "urgencies", "services"
 end
