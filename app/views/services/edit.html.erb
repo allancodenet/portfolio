@@ -1,4 +1,6 @@
-<h1>Editing service</h1>
+<%= render  "shared/container" do %>
+
+<h1 class= "text-lg font-medium text-gray-900">Editing service</h1>
 
 <%= render "form", service: @service %>
 
@@ -8,3 +10,4 @@
   <%= link_to "Show this service", @service %> |
   <%= link_to "Back to services", services_path %>
 </div>
+<% end %>

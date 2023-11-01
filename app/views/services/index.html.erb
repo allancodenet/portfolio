@@ -1,14 +1,17 @@
+<%= render  "shared/container" do %>
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Services</h1>
+<h1 class= "text-lg font-medium text-gray-900">Services</h1>
 
 <div id="services">
   <% @services.each do |service| %>
     <%= render service %>
     <p>
-      <%= link_to "Show this service", service %>
+      <%= link_to "Show this service", service, class:"text-lg font-medium text-gray-900" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New service", new_service_path %>
+<%= link_to "New service", new_service_path,class: "text-lg font-medium text-gray-900" %>
+<% end %>

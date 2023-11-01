@@ -1,10 +1,12 @@
+<%= render  "shared/container" do %>
 <p style="color: green"><%= notice %></p>
 
 <%= render @service %>
 
 <div>
-  <%= link_to "Edit this service", edit_service_path(@service) %> |
+  <%= link_to "Edit this service", edit_service_path(@service),class: "text-lg font-medium text-gray-900" %> |
   <%= link_to "Back to services", services_path %>
 
-  <%= button_to "Destroy this service", @service, method: :delete %>
+  <%= button_to "Destroy this service", @service, method: :delete, class: "text-lg font-medium text-gray-900" %>
 </div>
+<% end %>
