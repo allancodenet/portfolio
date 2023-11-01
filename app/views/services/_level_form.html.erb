@@ -1,0 +1,16 @@
+<div class= "level_form">
+           <h2 class="text-green-950">Fields for  level</h2>
+
+           <div  class="col-span-full">
+              <%= form.label :name, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :name, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"%>
+            </div>
+
+            <div  class="col-span-full">
+            <%=form.label :price, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :price, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+            </div>
+
+         <%= link_to_remove_nested(form) %>
+
+</div>

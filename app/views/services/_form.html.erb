@@ -25,53 +25,27 @@
             <%= form.label :price, class:"block text-sm font-medium text-gray-700" %>
             <%= form.text_field :price, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
           </div>
-
-          <div>
-          <h2>Fields for  levels</h2>
-            <%= form.fields_for  :level do |level_form| %>
-            <div  class="col-span-full">
-              <%= level_form.label :name, class:"block text-sm font-medium text-gray-700" %>
-            <%= level_form.text_field :name, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"%>
-            </div>
-
-            <div  class="col-span-full">
-            <%=level_form.label :price, class:"block text-sm font-medium text-gray-700" %>
-            <%= level_form.text_field :price, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-            </div>
+          <div class= "text-blue-600 cursor-pointer">
+           <%= link_to_add_nested(form, :levels, '#levels', partial: 'level_form') %>
+          
+          </div>
+          <div id = "levels">
+            <%= form.fields_for  :levels do |level_form| %>
+             <%= render "level_form", form: level_form  %>
             <% end %>
           </div>
 
           <div>
-          <h2>Fields for  extras</h2>
+          <h2 class="text-green-950">Fields for  extras</h2>
             <%= form.fields_for  :extra do |extra_form| %>
-            <div class="col-span-full">
-            <%= extra_form.label :name, class:"block text-sm font-medium text-gray-700" %>
-            <%= extra_form.text_field :name, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-            </div>
-            <div class="col-span-full">
-            <%= extra_form.label :description, class:"block text-sm font-medium text-gray-700" %>
-            <%= extra_form.text_field :description, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-            </div>
-
-            <div class="col-span-full">
-            <%=extra_form.label :price, class:"block text-sm font-medium text-gray-700" %>
-            <%= extra_form.text_field :price, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-            
-            </div>
+            <%= render "extra_form", form: extra_form  %>
             <% end %>
           </div>
 
           <div>
-          <h2 class="text-green-200">Fields for  urgencies</h2>
+          <h2 class="text-green-950">Fields for  urgencies</h2>
             <%= form.fields_for  :urgency do |urgency_form| %>
-            <div  class="col-span-full">
-            <%= urgency_form.label :duration, class:"block text-sm font-medium text-gray-700" %>
-            <%= urgency_form.number_field :duration, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-            </div>
-            <div  class="col-span-full">
-            <%= urgency_form.label :price, class:"block text-sm font-medium text-gray-700" %>
-            <%= urgency_form.text_field :price, class:"block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-            </div>
+             <%= render "urgency_form", form: urgency_form  %>
 
             <% end %>
           </div>
