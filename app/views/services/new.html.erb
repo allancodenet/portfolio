@@ -1,0 +1,17 @@
+<%= render  "shared/container" do %>
+<div>
+<h1 class= "text-lg font-medium text-gray-900">New service</h1>
+
+<%= render "form", service: @service %>
+
+<br>
+
+<div>
+  <%= link_to "Back to services", services_path , class: "text-lg font-medium text-gray-900"%>
+</div>
+
+
+
+</div>
+
+<% end %>
